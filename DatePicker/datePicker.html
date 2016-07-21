@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.standalone.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script src="js/bootstrap-datepicker.min.js" ></script>
+
+	<style>
+	.datepicker table tr td.day:hover, .datepicker table tr td.focused {
+    background: #337ab7;
+    color: #ffffff;
+    cursor: pointer;
+}
+	</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <!-- <input type='text' class="form-control" id='datetimepicker4' /> -->
+            <div class="input-group date">
+			    <input type="text" class="form-control" id="datepicker">
+			    <div class="input-group-addon custom">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+
+			
+        </div>
+        <script type="text/javascript">
+            $(function () {
+            		$('#datepicker').datepicker({autoclose:true,todayHighlight:true});
+            		$('.custom').click(function() {
+            			$('#datepicker').focus();
+            		})
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>
