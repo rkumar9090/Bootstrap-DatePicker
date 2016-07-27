@@ -1,0 +1,65 @@
+    .datepicker table tr td.day:hover,
+    .datepicker table tr td.focused {
+        background: #337ab7;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    ul.radiolist li {
+        display: block;
+        position: relative;
+        float: left;
+    }
+    ul.radiolist li input[type=radio] {
+        position: absolute;
+        visibility: hidden;
+    }
+    ul.radiolist li label {
+        display: inline;
+        position: relative;
+        padding: 7px 10px 7px 35px;
+        margin: 10px auto;
+        height: 30px;
+        left: -10px;
+        z-index: 9;
+        cursor: pointer;
+        -webkit-transition: all 0.25s linear;
+    }
+    ul.radiolist li .check {
+        display: block;
+        position: absolute;
+        border: 5px solid #AAAAAA;
+        border-radius: 100%;
+        height: 29px;
+        width: 29px;
+        top: -4px;
+        left: -9px;
+        z-index: 5;
+        transition: border .25s linear;
+        -webkit-transition: border .25s linear;
+    }
+    ul.radiolist li .check::before {
+        display: block;
+        position: absolute;
+        content: '';
+        border-radius: 100%;
+        height: 15px;
+        width: 15px;
+        top: 2px;
+        left: 2px;
+        margin: auto;
+        transition: background 0.25s linear;
+        -webkit-transition: background 0.25s linear;
+    }
+    input[type=radio]:checked ~ .check {
+        border: 5px solid #2196F3;
+    }
+    input[type=radio]:checked ~ .check::before {
+        background: #2196F3;
+    }
+    input[type=radio]:checked ~ label {
+        color: #2196F3;
+    }
+
+    .no_padding{
+        padding: 0px;
+    }

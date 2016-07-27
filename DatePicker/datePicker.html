@@ -1,49 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.standalone.min.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-	<script src="js/bootstrap-datepicker.min.js" ></script>
-
-	<style>
-	.datepicker table tr td.day:hover, .datepicker table tr td.focused {
-    background: #337ab7;
-    color: #ffffff;
-    cursor: pointer;
-}
-	</style>
-</head>
-<body>
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
+   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.standalone.min.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <script src="js/bootstrap-datepicker.min.js" ></script>
+   </head>
+   <body>
+      <div class="container">
+      <div class="row">
+      <div class="panel panel-primary">
+      <div class="panel-heading">Search</div>
+      <div class="panel-body">
+         <div class="col-sm-4 no_padding">
+            <ul class="radiolist col-sm-12 no_padding">
+               <li >
+                  <input type="radio" id="radio-day" name="coe-date-radio" value="DAY">
+                  <label for="radio-day">Day</label>
+                  <div class="check"></div>
+               </li>
+               <li>
+                  <input type="radio" id="radio-week" name="coe-date-radio" value="WEEK">
+                  <label for="radio-week">Week</label>
+                  <div class="check">
+                     <div class="inside"></div>
+                  </div>
+               </li>
+               <li>
+                  <input type="radio" id="radio-month" name="coe-date-radio" value="MONTH">
+                  <label for="radio-month">Month</label>
+                  <div class="check">
+                     <div class="inside"></div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class='col-sm-4'>
             <!-- <input type='text' class="form-control" id='datetimepicker4' /> -->
             <div class="input-group date">
-			    <input type="text" class="form-control" id="datepicker">
-			    <div class="input-group-addon custom">
-			        <span class="glyphicon glyphicon-th"></span>
-			    </div>
-			</div>
-
-			
-        </div>
-        <script type="text/javascript">
-            $(function () {
-            		$('#datepicker').datepicker({autoclose:true,todayHighlight:true});
-            		$('.custom').click(function() {
-            			$('#datepicker').focus();
-            		})
-            });
-        </script>
-    </div>
-</div>
-
-</body>
+               <input type="text" class="form-control" id="datepicker">
+               <div class="input-group-addon custom">
+                  <span class="glyphicon glyphicon-th"></span>
+               </div>
+            </div>
+         </div>
+         <div class='col-sm-4'>
+            <button type="button" class="btn btn-primary">Primary</button>
+         </div>
+      </div>
+      <script type="text/javascript">
+         $( document ).ready(function() {
+             var $radios = $('input:radio[name=coe-date-radio]');
+             if($radios.is(':checked') === false) {
+                 $radios.filter('[value=DAY]').prop('checked', true);
+                  $('#datepicker').datepicker({autoclose:true,todayHighlight:true});
+             }
+         });
+         
+                  $(function () {
+                      $( ".radiolist" ).click(function() {
+                          $('#datepicker').datepicker('destroy');
+                          var value = $("input[name=coe-date-radio]:checked").val();
+                          switch(value) {
+                              case "DAY":
+                                  $('#datepicker').val('');
+                                  $('#datepicker').datepicker({autoclose:true,todayHighlight:true});
+                                  break;
+                              case "WEEK":
+                                   $('#datepicker').val('');
+                                   $('#datepicker').datepicker({autoclose:true,todayHighlight:true,daysOfWeekDisabled:[1,2,3,4,5,6],daysOfWeekHighlighted:[0]});
+                                  break;
+                              case "MONTH":
+                                   $('#datepicker').val('');
+                                   $('#datepicker').datepicker({autoclose:true,todayHighlight:true,minViewMode:1});
+                                  break;
+                          }
+                          
+                      });
+                  });
+               
+      </script>
+   </body>
 </html>
